@@ -3,10 +3,14 @@ package com.WeCare.Entity;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.WeCare.Utility.CoachIdGenerator;
+
+@Entity
 public class CoachEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,8 +38,10 @@ public class CoachEntity {
 		return coachId;
 	}
 
-	public void setCoachId(String coachId) {
-		this.coachId = coachId;
+	public void setCoachId(Object object) {
+//		CoachIdGenerator gene = new CoachIdGenerator();
+//		this.coachId = gene.generate(null, object);
+//		this.coachId = coachId;
 	}
 
 	public String getPassword() {

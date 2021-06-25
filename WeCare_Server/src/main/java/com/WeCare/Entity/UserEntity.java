@@ -7,7 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.WeCare.Utility.CoachIdGenerator;
+import com.WeCare.Utility.UserIdGenerator;
+
+
+
 public class UserEntity {
+	
+	public UserIdGenerator userIdGenerator;
+	public CoachIdGenerator coachIdGenerator;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String userId;
