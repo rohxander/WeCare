@@ -3,6 +3,7 @@ package com.WeCare.Entity;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +12,7 @@ import com.WeCare.Utility.CoachIdGenerator;
 import com.WeCare.Utility.UserIdGenerator;
 
 
-
+@Entity
 public class UserEntity {
 	
 	public UserIdGenerator userIdGenerator;
