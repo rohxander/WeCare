@@ -39,9 +39,8 @@ public class CoachEntity {
 	}
 
 	public void setCoachId(Object object) {
-//		CoachIdGenerator gene = new CoachIdGenerator();
-//		this.coachId = gene.generate(null, object);
-		this.coachId = coachId;
+		CoachIdGenerator generator = new CoachIdGenerator();
+		this.coachId = generator.generate(null, object);
 	}
 
 	public String getPassword() {

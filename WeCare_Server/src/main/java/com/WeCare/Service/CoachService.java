@@ -13,7 +13,15 @@ public class CoachService {
 	public CoachRepository coachRepository;
 	
 	public String createCoach(CoachDTO coachDTO) {	
-		return coachDTO.getCoachId();
+		CoachEntity coachEntity = new CoachEntity();
+		coachEntity.setCoachId(coachDTO);
+		coachEntity.setDateOfBirth(coachDTO.getDateOfBirth());
+		coachEntity.setGender(coachDTO.getGender());
+		coachEntity.setMobileNumber(coachDTO.getMobileNumber());
+		coachEntity.setName(coachDTO.getName());
+		coachEntity.setPassword(coachDTO.getPassword());
+		coachEntity.setSpeciality(coachDTO.getSpeciality());
+		return coachEntity.getCoachId();
 	}
 	
 	public boolean loginCoach(LoginDTO loginDTO) {
@@ -22,8 +30,14 @@ public class CoachService {
 	
 	public CoachDTO getCoachProfile(String CoachId) {
 		CoachEntity coachEntity = new CoachEntity();
-		
-		CoachDTO dummy = new CoachDTO();
-		return dummy;
+		coachEntity = coachRepository.findByCoachId(CoachId);
+		CoachDTO coachDTO = new CoachDTO();
+		coachDTO.setCoachId(coachEntity.getCoachId());
+		coachDTO.setDateOfBirth(coachEntity.getDateOfBirth());
+		coachDTO.setGender(coachEntity.getGender());
+		coachDTO.setMobileNumber(coachEntity.getMobileNumber());
+		coachDTO.setName(coachEntity.getName());
+		coachDTO.setSpeciality(coachEntity.getSpeciality());		
+		return coachDTO;
 	}
 }
