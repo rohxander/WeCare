@@ -8,15 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.WeCare.Utility.CoachIdGenerator;
 import com.WeCare.Utility.UserIdGenerator;
 
 
 @Entity
 public class UserEntity {
-	
-	public UserIdGenerator userIdGenerator;
-	public CoachIdGenerator coachIdGenerator;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

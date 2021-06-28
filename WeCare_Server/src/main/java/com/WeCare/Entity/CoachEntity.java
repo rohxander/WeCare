@@ -10,10 +10,9 @@ import javax.persistence.Id;
 
 import com.WeCare.Utility.CoachIdGenerator;
 
-@Entity
+@Entity(name="coachtable")
 public class CoachEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String coachId;
 	
 	@Column
@@ -22,13 +21,13 @@ public class CoachEntity {
 	@Column
 	private String name;
 	
-	@Column
+	@Column(name="date_of_birth")
 	private LocalDate dateOfBirth;
 	
 	@Column
 	private char gender;
 	
-	@Column
+	@Column(name = "mobile_number")
 	private long mobileNumber;
 	
 	@Column

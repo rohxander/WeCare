@@ -12,7 +12,6 @@ import com.WeCare.Service.CoachService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("CoachContoller")
 public class CoachController {
 	
 	@Autowired
@@ -20,11 +19,13 @@ public class CoachController {
 	
 	
 	@PostMapping("/coaches")
-	@CrossOrigin(origins="http://localhost:4200")
-	public String registerUser(@RequestBody CoachDTO coachDTO) throws Exception {
+//	@CrossOrigin(origins="http://localhost:4200")
+	public String registerUser(@RequestBody CoachDTO coachDTO){
 		
-		String tempCoachId=null;
-		return tempCoachId;
+		String newCoachId=null;
+		newCoachId=service.createCoach(coachDTO);
+		
+		return newCoachId;
 		
 	}
 	
