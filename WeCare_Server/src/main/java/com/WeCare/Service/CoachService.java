@@ -50,17 +50,17 @@ public class CoachService {
 		}
 	}
 	
-//	public CoachDTO getCoachProfile(String CoachId) {
-//		CoachEntity coachEntity = new CoachEntity();
-//		coachEntity = coachRepository.findByCoachId(CoachId);
-//		CoachDTO coachDTO = new CoachDTO();
-//		coachDTO.setCoachId(coachEntity.getCoachId());
-//		coachDTO.setDateOfBirth(coachEntity.getDateOfBirth());
-//		coachDTO.setGender(coachEntity.getGender());
-//		coachDTO.setMobileNumber(coachEntity.getMobileNumber());
-//		coachDTO.setName(coachEntity.getName());
-//		coachDTO.setSpeciality(coachEntity.getSpeciality());		
-//		return coachDTO;
-//	}
+	public CoachDTO getCoachProfile(String CoachId) {
+		CoachEntity coachEntity = new CoachEntity();
+		coachEntity = coachRepository.findByCoachId(CoachId);
+		CoachDTO coachDTO = new CoachDTO();
+		coachDTO.setCoachId(coachEntity.getCoachId());
+		coachDTO.setDateOfBirth(coachEntity.getDateOfBirth());
+		coachDTO.setGender(coachEntity.getGender());
+		coachDTO.setMobileNumber(coachEntity.getMobileNumber());
+		coachDTO.setName(coachEntity.getName());
+		coachDTO.setSpeciality(coachEntity.getSpeciality());		
+		return coachDTO;
+	}
 
 }
