@@ -89,4 +89,12 @@ public class CoachEntity {
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
 	}
+	
+	@Override
+	public String toString() {
+		return "CoachEntity [coachId=" + coachId + ", password=" + password + ", name=" + name + ", dateOfBirth="
+				+ dateOfBirth + ", gender=" + gender + ", mobileNumber=" + mobileNumber + ", speciality=" + speciality
+				+ "]";
+	}
+
 }

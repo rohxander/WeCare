@@ -20,7 +20,7 @@ public class CoachController {
 	
 	@PostMapping("/coaches")
 //	@CrossOrigin(origins="http://localhost:4200")
-	public String registerUser(@RequestBody CoachDTO coachDTO){
+	public String registerUser(@RequestBody CoachDTO coachDTO) throws Exception{
 		
 		String newCoachId=null;
 		newCoachId=service.createCoach(coachDTO);

@@ -10,11 +10,20 @@ import com.WeCare.Repository.CoachRepository;
 
 @Service
 public class CoachService {
+	
 	@Autowired
 	public CoachRepository coachRepository;
 	
-	public String createCoach(CoachDTO coachDTO) {
+	public String createCoach(CoachDTO coachDTO) throws Exception{
+		Long mobile = coachDTO.getMobileNumber();
+		if(mobile!=null && !"".equals(mobile)) {
+			CoachEntity mobileCheck = coachRepository.findByMobileNumber(mobile);
+			if(mobileCheck!=null) {
+				throw new Exception("User with "+ mobile +" already exists");
+			}
+		}
 		CoachEntity coachEntity = new CoachEntity();
+		CoachEntity dummy = new CoachEntity();
 		coachEntity.setCoachId(coachDTO);
 		coachEntity.setDateOfBirth(coachDTO.getDateOfBirth());
 		coachEntity.setGender(coachDTO.getGender());
@@ -42,4 +51,5 @@ public class CoachService {
 //		coachDTO.setSpeciality(coachEntity.getSpeciality());		
 //		return coachDTO;
 //	}
+
 }
