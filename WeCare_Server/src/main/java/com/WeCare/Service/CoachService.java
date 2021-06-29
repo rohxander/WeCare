@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.WeCare.DTO.CoachDTO;
+import com.WeCare.DTO.LoginDTO;
 //import com.WeCare.DTO.LoginDTO;
 import com.WeCare.Entity.CoachEntity;
 import com.WeCare.Repository.CoachRepository;
@@ -14,6 +15,7 @@ public class CoachService {
 	@Autowired
 	public CoachRepository coachRepository;
 	
+	
 	public String createCoach(CoachDTO coachDTO) throws Exception{
 		Long mobile = coachDTO.getMobileNumber();
 		if(mobile!=null && !"".equals(mobile)) {
@@ -23,7 +25,6 @@ public class CoachService {
 			}
 		}
 		CoachEntity coachEntity = new CoachEntity();
-		CoachEntity dummy = new CoachEntity();
 		coachEntity.setCoachId(coachDTO);
 		coachEntity.setDateOfBirth(coachDTO.getDateOfBirth());
 		coachEntity.setGender(coachDTO.getGender());
@@ -34,11 +35,21 @@ public class CoachService {
 		coachEntity = coachRepository.save(coachEntity);
 		return coachEntity.getCoachId();
 	}
-//	
-//	public boolean loginCoach(LoginDTO loginDTO) {
-//		return false;
-//	}
-//	
+	
+	public boolean loginCoach(LoginDTO loginDTO) throws Exception{
+		CoachEntity coachEntity = new CoachEntity();
+		coachEntity = coachRepository.findByCoachId(loginDTO.getId());
+		if(coachEntity==null) {
+			throw new Exception("COACHID_NOT_FOUND");
+		}
+		else if(!coachEntity.getPassword().equals(loginDTO.getPassword())) {
+			throw new Exception("CREDENTIALS_NOT_MATCH");
+		}
+		else {
+			return true;
+		}
+	}
+	
 //	public CoachDTO getCoachProfile(String CoachId) {
 //		CoachEntity coachEntity = new CoachEntity();
 //		coachEntity = coachRepository.findByCoachId(CoachId);

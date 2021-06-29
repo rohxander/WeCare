@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.WeCare.DTO.CoachDTO;
+import com.WeCare.DTO.LoginDTO;
 import com.WeCare.Service.CoachService;
 
 @CrossOrigin
@@ -19,7 +20,6 @@ public class CoachController {
 	
 	
 	@PostMapping("/coaches")
-//	@CrossOrigin(origins="http://localhost:4200")
 	public String registerUser(@RequestBody CoachDTO coachDTO) throws Exception{
 		
 		String newCoachId=null;
@@ -29,18 +29,10 @@ public class CoachController {
 		
 	}
 	
-//	@PostMapping("/login")
-//	@CrossOrigin(origins="http://localhost:4200")
-//	public User loginUser(@RequestBody User user) throws Exception {
-//		String tempEmailId=user.getEmailId();
-//		String tempPassword=user.getPassword();
-//		User userObj=null;
-//		if(tempEmailId!=null && tempPassword!=null) {
-//			userObj=service.fetchUserByEmailIdAndPassword(tempEmailId, tempPassword);
-//		}
-//		if(userObj==null) {
-//			throw new Exception("Bad credentials");
-//		}
-//		return userObj;
-//	}
+	@PostMapping("/coaches/login")
+	public Boolean loginUser(@RequestBody LoginDTO loginDTO) throws Exception {
+		Boolean flag = null;
+		flag = service.loginCoach(loginDTO);
+		return flag;
+	}
 }
