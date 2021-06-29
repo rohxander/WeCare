@@ -1,16 +1,19 @@
 package com.WeCare.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.WeCare.DTO.CoachDTO;
 import com.WeCare.DTO.LoginDTO;
+import com.WeCare.Entity.CoachEntity;
 import com.WeCare.Service.CoachService;
 
 @CrossOrigin
@@ -43,5 +46,12 @@ public class CoachController {
 		CoachDTO coachDTO = new CoachDTO();
 		coachDTO = service.getCoachProfile(CoachId);
 		return coachDTO;
+	}
+	
+	@GetMapping("/coaches/all")
+	public List<CoachEntity> showAllCoaches() throws Exception {
+		List<CoachEntity> list = new ArrayList<CoachEntity>();
+		list = service.showAllCoaches();
+		return list;
 	}
 }

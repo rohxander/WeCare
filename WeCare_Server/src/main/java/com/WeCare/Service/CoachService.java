@@ -1,5 +1,8 @@
 package com.WeCare.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +53,12 @@ public class CoachService {
 		}
 	}
 	
-	public CoachDTO getCoachProfile(String CoachId) {
+	public CoachDTO getCoachProfile(String CoachId) throws Exception {
 		CoachEntity coachEntity = new CoachEntity();
 		coachEntity = coachRepository.findByCoachId(CoachId);
+		if(coachEntity==null) {
+			throw new Exception("COACH_NOT_FOUND");
+		}
 		CoachDTO coachDTO = new CoachDTO();
 		coachDTO.setCoachId(coachEntity.getCoachId());
 		coachDTO.setDateOfBirth(coachEntity.getDateOfBirth());
@@ -62,5 +68,16 @@ public class CoachService {
 		coachDTO.setSpeciality(coachEntity.getSpeciality());		
 		return coachDTO;
 	}
-
+	
+	public List<CoachEntity> showAllCoaches() throws Exception{
+		List<CoachEntity> listEntity = new ArrayList<CoachEntity>();
+		listEntity = coachRepository.findAll();
+		if(listEntity==null) {
+			throw new Exception("NO_COACHES_FOUND");
+		}
+//		List<CoachDTO> listDTO = new ArrayList<CoachDTO>();
+		
+		return listEntity;
+	}
+	
 }
